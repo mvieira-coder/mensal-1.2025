@@ -29,6 +29,9 @@ public class Veiculo {
     @NotBlank(message = "O campo modelo é obrigatório")
     private String modelo;
 
+    @Column(nullable = false)
+    private Integer ano;
+
     @Enumerated(EnumType.STRING)
     @NotNull(message = "O campo categoria é obrigatório")
     private CategoriaVeiculo categoria;
