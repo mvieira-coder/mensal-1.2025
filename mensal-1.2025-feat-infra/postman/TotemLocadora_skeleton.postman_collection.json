@@ -1,0 +1,125 @@
+{
+  "info": {
+    "name": "TotemLocadora - Skeleton",
+    "_postman_id": "11111111-2222-3333-4444-555555555555",
+    "description": "Coleção de testes para o esqueleto do Totem de Locação (MySQL).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Criar Cliente",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/clientes",
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"nome\":\"João\", \"cpf\":\"12345678900\", \"telefone\":\"(45)99999-0000\" }"
+        }
+      }
+    },
+    {
+      "name": "Criar Veículo",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/veiculos",
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"placa\":\"ABC1D23\",\"modelo\":\"Civic G9\",\"categoria\":\"CARRO\",\"valorHora\":25.0,\"status\":\"DISPONIVEL\" }"
+        }
+      }
+    },
+    {
+      "name": "Criar Totem",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/totens",
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"codigo\":\"T-01\",\"local\":\"Aeroporto\" }"
+        }
+      }
+    },
+    {
+      "name": "Criar Acessório",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/acessorios",
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"nome\":\"Cadeirinha\",\"taxaHora\":5.0 }"
+        }
+      }
+    },
+    {
+      "name": "Criar Locação (ok)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/locacoes",
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \"dataInicio\":\"2025-08-17T09:00:00\",\\n  \"dataFim\":\"2025-08-17T13:00:00\",\\n  \"cliente\":{\"id\":1},\\n  \"veiculo\":{\"id\":1},\\n  \"totem\":{\"id\":1},\\n  \"acessorios\":[{\"id\":1}]\\n}"
+        }
+      }
+    },
+    {
+      "name": "Criar Locação (erro por conflito)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/locacoes",
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \"dataInicio\":\"2025-08-17T10:00:00\",\\n  \"dataFim\":\"2025-08-17T12:00:00\",\\n  \"cliente\":{\"id\":2},\\n  \"veiculo\":{\"id\":1},\\n  \"totem\":{\"id\":1}\\n}"
+        }
+      }
+    },
+    {
+      "name": "Relatório: faturamento por totem",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/locacoes/relatorio/faturamento-por-totem?inicio=2025-08-01T00:00:00&fim=2025-08-31T23:59:59"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ]
+}
