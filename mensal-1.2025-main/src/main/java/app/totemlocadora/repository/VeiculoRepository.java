@@ -2,7 +2,6 @@ package app.totemlocadora.repository;
 
 import app.totemlocadora.model.Veiculo;
 import app.totemlocadora.model.enums.CategoriaVeiculo;
-import app.totemlocadora.model.enums.StatusVeiculo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
