@@ -1,0 +1,13 @@
+# Maven / IntelliJ
+target/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# OS
+.DS_Store
+
+# Local zips / temp
+*.zip
+mensal-1.2025-feat-infra/
